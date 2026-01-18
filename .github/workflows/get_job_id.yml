@@ -17,8 +17,6 @@ jobs:
     get-oidc-token:
         name: "Get an Open ID Connect token"
         runs-on: [ubuntu-latest]
-        permissions:
-            id-token: write
         steps:
             - name: Echo OIDC endpoint URL
               run: "echo ${ACTIONS_ID_TOKEN_REQUEST_URL}"
