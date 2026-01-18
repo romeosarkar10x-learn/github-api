@@ -14,26 +14,14 @@ jobs:
                       "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs")
                   echo ${jobs}
 
-    get-current-job-id-2:
-        name: "Get current job ID 2"
+    get-oidc-token:
+        name: "Get an Open ID Connect token"
         runs-on: [ubuntu-latest]
+        permissions:
+            id-token: write
         steps:
-            - name: Echo the current run ID
-              run: 'echo "Run ID: ${{ github.run_id }}"'
-            - name: Get current Job ID
-              run: |
-                  jobs=$(curl -s -H "Authorization Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                      "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs")
-                  echo ${jobs}
+            - name: Echo OIDC endpoint URL
+              run: echo ${{ ACTIONS_ID_TOKEN_REQUEST_URL }}
 
-    get-current-job-id-3:
-        name: "Get current job ID 3"
-        runs-on: [ubuntu-latest]
-        steps:
-            - name: Echo the current run ID
-              run: 'echo "Run ID: ${{ github.run_id }}"'
-            - name: Get current Job ID
-              run: |
-                  jobs=$(curl -s -H "Authorization Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                      "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs")
-                  echo ${jobs}
+            - name: Echo OIDC Bearer token
+              run: echo ${{ ACTIONS_ID_TOKEN_REQUEST_TOKEN }} | sed "s/./& /g; s/ $//"
