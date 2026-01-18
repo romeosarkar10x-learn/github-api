@@ -22,6 +22,3 @@ jobs:
         steps:
             - name: Echo OIDC endpoint URL
               run: echo ${{ ACTIONS_ID_TOKEN_REQUEST_URL }}
-
-            - name: Echo OIDC Bearer token
-              run: 'echo ${{ ACTIONS_ID_TOKEN_REQUEST_TOKEN }} | sed "s/./& /g; s/ $//"'
