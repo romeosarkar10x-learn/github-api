@@ -9,7 +9,6 @@ jobs:
               run: 'echo "Run ID: ${{ github.run_id }}"'
             - name: Get current Job ID
               run: |
-              jobs=$(curl -s -H "Authorization Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                  "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs")
-              echo jobs
-
+                  jobs=$(curl -s -H "Authorization Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                      "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs")
+                  echo jobs
