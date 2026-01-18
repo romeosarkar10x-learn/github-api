@@ -34,4 +34,4 @@ jobs:
               run: |
                   curl -X POST "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/deployments" \
                     --data '{ "ref": "main", "sha": "'"${GITHUB_SHA}"'", "task": "test-deploy-using-curl" }' \
-                    --header "Authentication: Bearer ${{ secrets.GITHUB_TOKEN }}"
+                    --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
