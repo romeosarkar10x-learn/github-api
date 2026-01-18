@@ -18,10 +18,18 @@ jobs:
         name: "Get an Open ID Connect token"
         runs-on: [ubuntu-latest]
         permissions:
-            id-token: read
+            id-token: write
         steps:
             - name: Echo OIDC endpoint URL
               run: "echo ${ACTIONS_ID_TOKEN_REQUEST_URL}"
 
             - name: Echo OIDC Bearer token
               run: 'echo ${ACTIONS_ID_TOKEN_REQUEST_TOKEN} | sed "s/./& /g"'
+
+    create-a-deployment:
+        name: "Create a deployment"
+        runs-on: [ubuntu-latest]
+        steps:
+            - name: Create deployment
+              run: |
+                  echo ${GITHUB_API_URL}
