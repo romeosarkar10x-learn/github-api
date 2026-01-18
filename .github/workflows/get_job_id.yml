@@ -21,4 +21,4 @@ jobs:
             id-token: write
         steps:
             - name: Echo OIDC endpoint URL
-              run: echo ${{ ACTIONS_ID_TOKEN_REQUEST_URL }}
+              run: "echo ${{ ACTIONS_ID_TOKEN_REQUEST_URL }}"
