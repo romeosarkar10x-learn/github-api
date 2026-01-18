@@ -29,6 +29,8 @@ jobs:
     create-a-deployment:
         name: "Create a deployment"
         runs-on: [ubuntu-latest]
+        permissions:
+            deployments: write
         steps:
             - name: Create deployment
               run: |
