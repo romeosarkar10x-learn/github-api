@@ -35,5 +35,11 @@ jobs:
             - name: Create deployment
               run: |
                   curl -X POST "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/deployments" \
-                    --data '{ "ref": "main", "sha": "'"${GITHUB_SHA}"'", "task": "test-deploy-using-curl" }' \
+                    --data '{
+                        "ref": "main",
+                        "sha": "'"${GITHUB_SHA}"'",
+                        "task": "test-deploy-using-curl",
+                        "required_contexts": [],
+                        "auto_merge": false
+                    }' \
                     --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
