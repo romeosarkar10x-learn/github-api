@@ -32,5 +32,5 @@ jobs:
         steps:
             - name: Create deployment
               run: |
-                  # curl -X POST '${GITHUB_API_URL}/repos/
-                  env
+                  curl -X POST '${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/deployments' \
+                    --data '{ "ref": "main", "sha": "${GITHUB_SHA}", "task": "test-deploy-using-curl" }'
